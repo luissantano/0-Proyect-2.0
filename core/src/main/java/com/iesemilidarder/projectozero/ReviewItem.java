@@ -38,7 +38,4 @@ public class ReviewItem extends DBObject{
     protected void beforeSave() {
         doLog("todo!");
     }
-
-    protected void doLog(String s) {
-    }
 }

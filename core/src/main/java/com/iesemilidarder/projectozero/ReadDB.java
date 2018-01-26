@@ -21,7 +21,7 @@ public class ReadDB {
 
 
 
-    public ArrayList readRestaurants(String cercar) {
+    public static ArrayList readRestaurants(String cercar) {
 
         ArrayList<Restaurants> ar = new ArrayList();
 

@@ -41,7 +41,4 @@ public class User extends DBObject {
         doLog(String.format("Saving %s", this.getClass().getCanonicalName()));
         System.out.println("Saving users");
     }
-
-    protected void doLog(String format) {
-    }
 }

@@ -1,5 +1,6 @@
 import com.fasterxml.jackson.databind.ObjectMapper;
 import com.iesemilidarder.projectozero.*;
+
 import freemarker.template.Configuration;
 import org.apache.commons.lang3.StringUtils;
 import org.slf4j.Logger;
@@ -23,7 +24,7 @@ import static spark.Spark.*;
  */
 
 public class Launcher {
-    private static List<Restaurants> lRestaurant = new ArrayList<Restaurants>();
+    private static List<User> lUser = new ArrayList<User>();
     private static final Logger log = LoggerFactory.getLogger(Launcher.class);
 
     private static void init() {
@@ -32,7 +33,7 @@ public class Launcher {
             user.setId(i);
             user.setName("a" + i);
             user.save();
-            lRestaurant.add(User);
+            lUser.add(user);
         }
         DBObject dbo = lUser.get(0);
         log.info("Loading finished");
@@ -71,7 +72,7 @@ public class Launcher {
     public static void main(String... args) {
         staticFiles.location("/public");
         init();
-        port(8080);
+        port(8090);
         /*
         if (localhost) {
             String projectDir = System.getProperty("user.dir");
@@ -88,7 +89,6 @@ public class Launcher {
             user.setName("Hello world!");
             return user;
         }, new JsonTransformer());
-
         //biconditional response way2: via jackson
         get("/users", (request, response) -> {
             if (shouldReturnHtml(request)) {
@@ -104,6 +104,22 @@ public class Launcher {
                 ObjectMapper mapper = new ObjectMapper();
                 setResponseHeader(response, false);
                 return mapper.writeValueAsString(lUser);
+            }
+        });
+        get("/restaurants2", (request, response) -> {
+            if (shouldReturnHtml(request)) {
+                Map<String, Object> model = new HashMap<>();
+                model.put("posts", ReadDB.readRestaurants(""));
+                model.put("title", "Restaurants");
+                model.put("subtitle", "List of all restaurants");
+                return getFreemarkerEngine().render(
+                        new ModelAndView(model, "basicView.ftl")
+                );
+            } else {
+                CorsFilter.apply();
+                ObjectMapper mapper = new ObjectMapper();
+                setResponseHeader(response, false);
+                return mapper.writeValueAsString(ReadDB.readRestaurants(""));
             }
         });
         /*get("/scrap",(request,response)->{
