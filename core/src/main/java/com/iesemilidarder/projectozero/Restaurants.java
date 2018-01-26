@@ -6,14 +6,41 @@ package com.iesemilidarder.projectozero;
  * Create by winadmin in 19/1/2018.
  * Description:
  */
-public class Restaurants {
+//He afegit un private string anomenat imatge per poder mostrar una imatge.
 
-        private String name;
-        private String address;
-        private String website;
-        private String telephone;
-        private String type;
-        private String image;
+import java.util.ArrayList;
+
+public class Restaurants {
+    private String name;
+    private String address;
+    private String website;
+    private String telephone;
+    private String type;
+    private String image;
+    private String id;
+
+    //Cream l'estring privat anomenat id  ,amb el Set i get
+
+    public String getId() {
+        return id;
+    }
+
+    public void setId(String id) {
+        this.id = id;
+    }
+
+    //Cream un ArrayList anomenada opinio
+
+    private ArrayList<String> opinio;
+
+    public ArrayList<String> getOpinion() {
+
+        return opinio;
+    }
+
+    public void opinio(ArrayList<String> opinio) {
+        this.opinio = opinio;
+    }
 
 
     public String getImage() {
@@ -65,4 +92,7 @@ public class Restaurants {
     }
 
 
+    public Restaurants() {
+        this.opinio = new ArrayList<String>();
+    }
 }

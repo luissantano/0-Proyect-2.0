@@ -18,6 +18,7 @@
 
     <!-- Custom styles for this template -->
     <link href="css/style.css" rel="stylesheet">
+
 </head>
 <body>
 <!-- Navigation bar -->
@@ -60,32 +61,27 @@
     <div class="container">
         <hr>
 
-        <!--  Cream un Array amb el request.getParamater cercar i intrduim el text html amb els getters    -->
-        <%
-            ReadDB readDB = new ReadDB();
-            ArrayList al = readDB.readRestaurants(request.getParameter("cercar"));
-            Iterator itr = al.iterator();
-            while (itr.hasNext()) {
-                Restaurants rst = (Restaurants) itr.next();
-                out.println("<div class= 'row'>");
-                out.println("<div class= 'col-md-4'> " +
-                        "<img class= 'img-fluid' src='"+rst.getImage()+"'> " +
-                        "</div>");
-                out.println("<div class= col-md-8>");
+        <!--A aquesta part del codi   , feim que mostri el nom , tipus , adreça , el telèfon i la pàgina web -->
+<%
 
+    Restaurants restaurant = (Restaurants) request.getAttribute("id");
 
+    out.println("<p>" + "<img class='img-fluid' src='" + restaurant.getImage() + "'>"  + "</p>");
 
-                out.println("<h2>" + rst.getName()+ "</h2> <br> <p> <strong>" + rst.getAddress() + "</p> </strong> <br> <p> <strong>" + rst.getWebsite() + "</p> </strong> <br> <p> <strong>" + rst.getTelephone() + "</p> </strong>");
+    out.println(
 
-                //Al darrer outprint feim que el botó que hi ha davall de cada restaurant , ens redireccioni al link "mistrar?id" que hem mencionat al xml , amb el getId que hem creat al fitxer de restaurants.java
-
-                out.println(" <a class='btn btn-secondary' href='/mostrar?id="+ rst.getId()+"' role='button'>Més informació &raquo;</a></div>  </div>");
-
-
-            }
-        %>
-
-<hr>
+                    "<p>" + restaurant.getName() + "</p>" +
+                    "<p>" + restaurant.getType() + "</p>" +
+                    "<p>" + restaurant.getAddress() + "</p>" +
+                    "<p>" + restaurant.getTelephone() + "</p>" +
+                    "<p>" + restaurant.getWebsite() + "</p>"
+    );
+//Utilitzarem un for per que tregui totes les opinions que s'han redactat sobre el restaurant en questió.
+    for (String opinio :restaurant.getOpinion()) {
+        out.println("<p>" + opinio + "</p>");
+    }
+%>
+        <hr>
     </div> <!-- /container -->
 
 </main>
@@ -99,6 +95,5 @@
 <script src="https://code.jquery.com/jquery-3.2.1.slim.min.js" integrity="sha384-KJ3o2DKtIkvYIK3UENzmM7KCkRr/rE9/Qpg6aAZGJwFDMVNA/GpGFF93hXpG5KkN" crossorigin="anonymous"></script>
 <script src="https://cdnjs.cloudflare.com/ajax/libs/popper.js/1.12.3/umd/popper.min.js" integrity="sha384-vFJXuSJphROIrBnz7yo7oB41mKfc8JzQZiCq4NCceLEaO4IHwicKwpJf9c9IpFgh" crossorigin="anonymous"></script>
 <script src="https://maxcdn.bootstrapcdn.com/bootstrap/4.0.0-beta.2/js/bootstrap.min.js" integrity="sha384-alpBpkh1PFOepccYVYDB4do5UnbKysX5WZXm3XxPqe5iKTfUKjNkCk9SaVuEZflJ" crossorigin="anonymous"></script>
-
 </body>
 </html>
