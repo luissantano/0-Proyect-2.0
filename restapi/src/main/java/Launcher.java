@@ -106,7 +106,7 @@ public class Launcher {
                 return mapper.writeValueAsString(lUser);
             }
         });
-        get("/restaurants2", (request, response) -> {
+        get("/restaurants", (request, response) -> {
             if (shouldReturnHtml(request)) {
                 Map<String, Object> model = new HashMap<>();
                 model.put("posts", ReadDB.readRestaurants(""));
