@@ -2,13 +2,17 @@
 
 He creado un proyecto multimodulo en el cual lo he dividido en tres modulos (Core | Presentationlayer | Restapi).
 
-Core : En el modulo Core he puesto , la conexión de la base de datos , la clase restaurante , DBObject , IDatabaseActions y ReviewItem
+### Core : 
 
-======
+En el modulo Core he puesto , la conexión de la base de datos , la clase restaurante , DBObject , IDatabaseActions y ReviewItem
 
-Presentation Layer : Es la capa que se encarga de los servlets (Mostrar Restaurants y TestServlet).
+### Presentation Layer : 
 
-restapi : Es la capa que se encarga del API (CorsFilter  , JsonTransformer , Launcher)
+Es la capa que se encarga de los servlets (Mostrar Restaurants y TestServlet).
+
+### restapi : 
+
+Es la capa que se encarga del API (CorsFilter  , JsonTransformer , Launcher)
 
 ##### Aquí se puede observar que al buscar "localhost:8090/restaurants se puede observar los diferentes restaurantes con sus ID y sus nombres.
 ![Foto que muestra los restaurantes](fotos/Restaurants.PNG)
