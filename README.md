@@ -4,6 +4,8 @@ He creado un proyecto multimodulo en el cual lo he dividido en tres modulos (Cor
 
 Core : En el modulo Core he puesto , la conexión de la base de datos , la clase restaurante , DBObject , IDatabaseActions y ReviewItem
 
+======
+
 Presentation Layer : Es la capa que se encarga de los servlets (Mostrar Restaurants y TestServlet).
 
 restapi : Es la capa que se encarga del API (CorsFilter  , JsonTransformer , Launcher)
