@@ -1,4 +1,9 @@
-package com.iesemilidarder.projectozero;
+package com.iesemilidarder.base;
+
+import org.apache.commons.beanutils.BeanUtils;
+
+import javax.persistence.Column;
+import javax.persistence.Entity;
 import java.lang.reflect.Field;
 import java.lang.reflect.InvocationTargetException;
 import java.sql.ResultSet;
@@ -7,20 +12,9 @@ import java.sql.SQLException;
 import java.util.ArrayList;
 import java.util.List;
 
-import javax.persistence.Column;
-import javax.persistence.Entity;
-
-import org.apache.commons.beanutils.BeanUtils;
-
-/**
- * proyecto-cero3
- * com.iesemilidarder.projectozero
- * Create by winadmin in 6/2/2018.
- * Description:
- */
 public class ResultSetMapper<T> {
     @SuppressWarnings("unchecked")
-    public List<T> mapRersultSetToObject(ResultSet rs, Class outputClass) {
+    public List<T> mapResultSetToObject(ResultSet rs, Class outputClass) {
         List<T> outputList = null;
         try {
             // make sure resultset is not null
@@ -56,7 +50,7 @@ public class ResultSetMapper<T> {
                             }
                         }
                         if (outputList == null) {
-                            outputList = new ArrayList<T>();
+                            outputList = new ArrayList<>();
                         }
                         outputList.add(bean);
                     }

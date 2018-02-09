@@ -3,7 +3,7 @@
 <%@ page import="java.util.ArrayList" %>
 <%@ page import="java.util.Iterator" %>
 <%@ page import="com.iesemilidarder.projectozero.ReadDB" %>
-<%@ page import="com.iesemilidarder.projectozero.Restaurants" %>
+<%@ page import="com.iesemilidarder.dao.Restaurants" %>
 <!doctype html>
 <html lang="ca">
 <head>

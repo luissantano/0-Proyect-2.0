@@ -1,4 +1,5 @@
 import com.fasterxml.jackson.databind.ObjectMapper;
+import com.iesemilidarder.dao.User;
 import com.iesemilidarder.projectozero.*;
 
 import freemarker.template.Configuration;
