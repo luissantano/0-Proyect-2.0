@@ -8,15 +8,32 @@ package com.iesemilidarder.projectozero;
  */
 //He afegit un private string anomenat imatge per poder mostrar una imatge.
 
+import javax.persistence.Column;
+import javax.persistence.Entity;
 import java.util.ArrayList;
 
+@Entity()
 public class Restaurants {
+
+    @Column(name="RES_NOM")
     private String name;
+
+    @Column(name="RES_ADRECA")
     private String address;
+
+    @Column(name="RES_WEB")
     private String website;
+
+    @Column(name="RES_TELEFON")
     private String telephone;
+
+    @Column(name="TRS_DESCRIPCIO")
     private String type;
+
+    @Column(name="RES_URL_IMG")
     private String image;
+
+    @Column(name="RES_CODI")
     private String id;
 
     //Cream l'estring privat anomenat id  ,amb el Set i get

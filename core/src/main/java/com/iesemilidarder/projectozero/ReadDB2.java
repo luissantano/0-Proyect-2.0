@@ -17,7 +17,7 @@ import java.util.function.Function;
 
 
 /*Cream una classe publica */
-public class ReadDB {
+public class ReadDB2 {
     private static final String DRIVER ="oracle.jdbc.driver.OracleDriver";
     private static final String THIN_URL ="jdbc:oracle:thin:@35.205.41.45:1521:XE";
     private static final String USER = "usuari";
@@ -45,12 +45,14 @@ public class ReadDB {
 
 
 
-    public static ArrayList readRestaurants(String cercar) {
+    public ArrayList readRestaurants(String cercar) {
 
+        List<Restaurants> arrayRestaurants  = new ArrayList<>();
 
-        ArrayList ar = new ArrayList();
 
         try {
+
+            String query = "SELECT R.RES_NOM, R.RES_ADRECA, R.RES_WEB, R.RES_TELEFON, R.RES_URL_IMG, R.RES_CODI, TR.TRS_DESCRIPCIO FROM RESTAURANTS R, TRESTAURANTS TR WHERE \" + ID + \"= R.RES_CODI AND R.RES_TRS_CODI = TR.TRS_CODI";
 
             Class.forName("oracle.jdbc.driver.OracleDriver");
 
@@ -60,11 +62,27 @@ public class ReadDB {
 
             Statement stmt = con.createStatement();
 
-            ResultSet rs;
+            ResultSet rs = stmt.executeQuery(query);
 
-            System.out.println(cercar);
+            ResultSetMapper<Restaurants> mapper = new ResultSetMapper<>();
+            arrayRestaurants = mapper.mapRersultSetToObject(rs, Restaurants.class);
+            stmt.close();
+            con.close();
 
-            //Aquest if serveix per al cercador . Diu que si el valor que introduim es null o no posam res , farà un select amb el nom , telèfon , imatge etc...
+            arrayRestaurants = new ArrayList<>();
+
+            Function<ResultSet, Object> func = new Function<ResultSet, Object>() {
+                public Object apply(ResultSet rs) {
+                    return mapper.mapRersultSetToObject(rs, Restaurants.class);
+
+                }
+
+            };
+            arrayRestaurants = (ArrayList) searchDB(query, func);
+
+            System.out.println("yuhu v2");
+
+          /*  //Aquest if serveix per al cercador . Diu que si el valor que introduim es null o no posam res , farà un select amb el nom , telèfon , imatge etc...
 
             if (cercar == null || cercar.equals("")) {
 
@@ -106,13 +124,14 @@ public class ReadDB {
             stmt.close();
             con.close();
 
-
+*/
         } catch (Exception e) {
             System.out.println(e.toString());
         }
-        return ar;
+        return arrayRestaurants;
 
     }
+
 
 
     public Restaurants ReadDBB(String ID) {
