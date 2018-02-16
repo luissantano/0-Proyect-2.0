@@ -1,12 +1,14 @@
 package com.iesemilidarder.dao;
 
+import com.iesemilidarder.base.DBObject;
+
 /**
  * zeroproject
  * com.iesemilidarder.projectozero
  * Create by winadmin in 19/1/2018.
  * Description:
  */
-public class ReviewItem extends DBObject{
+public class ReviewItem extends DBObject {
     private int id;
     private String name;
     private String location;

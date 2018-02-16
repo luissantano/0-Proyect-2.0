@@ -1,5 +1,7 @@
 package com.iesemilidarder.dao;
 
+import com.iesemilidarder.base.DBObject;
+
 /**
  * zeroproject
  * com.iesemilidarder.projectozero
